@@ -62,4 +62,10 @@ end
 if not (plugins == nil) then
     core.plugins.load_plugins(plugins)
 end
+
 core.funcs.create_user_command(funcs)
+
+if not (config.colorscheme == nil) then
+    vim.cmd("colorscheme " .. config.colorscheme)
+end
+
