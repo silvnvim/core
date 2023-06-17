@@ -4,6 +4,7 @@ return {
 
         "basic_file_management",
 
+        "eye_candy",
         "parentheses",
 	},
 }

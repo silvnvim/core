@@ -6,7 +6,7 @@ return {
         mapleader = " ",
     },
 
-    dependencies = {
+    deps = {
 		"line_numbers",
 		"tab_width",
 	},

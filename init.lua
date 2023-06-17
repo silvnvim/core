@@ -30,7 +30,7 @@ function apply_config(config)
         if plugins == nil then
             plugins = config.plugins
         else
-            for _, plugin in ipairs(plugins) do
+            for _, plugin in ipairs(config.plugins) do
                 table.insert(plugins, plugin)
             end
         end
@@ -43,8 +43,8 @@ function load_module(module_name)
     
 	apply_config(module_config)
 
-	if not (module_config.dependencies == nil) then
-		for _, dependency_name in ipairs(module_config.dependencies) do
+	if not (module_config.deps == nil) then
+		for _, dependency_name in ipairs(module_config.deps) do
 			load_module(dependency_name)
 		end
 	end
