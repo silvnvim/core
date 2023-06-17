@@ -1,6 +1,6 @@
 local core = require("core")
 
-local has_config, config = pcall(require("config"))
+local has_config, config = pcall(require, "config")
 if not has_config then
 	return
 end
