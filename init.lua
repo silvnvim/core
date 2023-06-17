@@ -1,6 +1,9 @@
 local core = require("core")
 
-local config = require("config")
+local has_config, config = pcall(require("config"))
+if not has_config then
+	return
+end
 local modules = config.modules
 
 
@@ -50,8 +53,10 @@ function load_module(module_name)
 	end
 end
 
-for _, module_name in ipairs(modules) do
-	load_module(module_name)
+if not (modules == nil) then
+	for _, module_name in ipairs(modules) do
+		load_module(module_name)
+	end
 end
 
 if not (plugins == nil) then
