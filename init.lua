@@ -2,6 +2,9 @@ local options_core = require("core.options")
 local load_opts = options_core.load_opts
 local load_gs = options_core.load_gs
 
+local mappings_core = require("core.mappings")
+local load_mappings = mappings_core.load_mappings
+
 
 local config = require("config")
 local modules = config.modules
@@ -13,6 +16,10 @@ function apply_config(config)
 	end
 	if not (config.gs == nil) then
 		load_gs(config.gs)
+	end
+
+	if not (config.mappings == nil) then
+		load_mappings(config.mappings)
 	end
 end
 
