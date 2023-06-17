@@ -41,21 +41,28 @@ function apply_config(config)
 end
 
 
-function load_module(module_name)
-	local module_config = require("config.modules." .. module_name)
+function load_module(module_name, module_parent)
+    local module_path = ""
+    if module_name:sub(1, 1) == "." then
+        module_path = module_name:sub(2)
+    else
+        module_path = module_parent .. module_name
+    end
+
+	local module_config = require("config.modules." .. module_path)
     
 	apply_config(module_config)
 
 	if not (module_config.deps == nil) then
 		for _, dependency_name in ipairs(module_config.deps) do
-			load_module(dependency_name)
+			load_module(dependency_name, module_path)
 		end
 	end
 end
 
 if not (modules == nil) then
 	for _, module_name in ipairs(modules) do
-		load_module(module_name)
+		load_module(module_name, "")
 	end
 end
 
