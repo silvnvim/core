@@ -3,5 +3,7 @@ return {
 		"basic_opts",
 
         "basic_file_management",
+
+        "parentheses",
 	},
 }

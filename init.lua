@@ -5,6 +5,7 @@ local modules = config.modules
 
 
 local funcs = {}
+local plugins = nil
 
 
 function apply_config(config)
@@ -22,6 +23,16 @@ function apply_config(config)
     if not (config.funcs == nil) then
         for name, func in pairs(config.funcs) do
             funcs[name] = func
+        end
+    end
+
+    if not (config.plugins == nil) then
+        if plugins == nil then
+            plugins = config.plugins
+        else
+            for _, plugin in ipairs(plugins) do
+                table.insert(plugins, plugin)
+            end
         end
     end
 end
@@ -43,4 +54,7 @@ for _, module_name in ipairs(modules) do
 	load_module(module_name)
 end
 
+if not (plugins == nil) then
+    core.plugins.load_plugins(plugins)
+end
 core.funcs.create_user_command(funcs)
