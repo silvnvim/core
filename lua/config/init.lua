@@ -2,6 +2,6 @@ return {
 	modules = {
 		"basic_opts",
 
-        "file_management_mappings",
+        "basic_file_management",
 	},
 }
