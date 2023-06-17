@@ -33,7 +33,7 @@ function M.create_user_command(funcs)
             end
         end,
         {
-            nargs = 1,
+            nargs = "?",
         }
     )
 end
